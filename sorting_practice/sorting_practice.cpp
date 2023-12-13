@@ -1,9 +1,77 @@
-﻿#include <iostream>
-
+// ascending Bubble
+#include <iostream>
 using namespace std;
 
-void bubbleSort(int arr[], int n) {
-    int temp = 0;
+int main() {
+    int n, temp;
+    cin >> n;
+    int arr[100];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    for (int i = 0; i < n ; i++) {
+        for (int j = 0; j < n - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
+}
+
+// descending
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, temp;
+    cin >> n;
+    int arr[100];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - 1; j++) {
+            if (arr[j] < arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
+}
+
+
+
+
+
+// ascending Exchange
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, temp;
+    cin >> n;
+    int arr[100];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
 
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
@@ -14,10 +82,58 @@ void bubbleSort(int arr[], int n) {
             }
         }
     }
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
 }
 
-void exchangeSort(int arr[], int n) {
-    int max_j, temp;
+// descending
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, temp;
+    cin >> n;
+    int arr[100];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] > arr[j]) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
+}
+
+
+
+
+
+// ascending Selection
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, temp, max_j;
+    cin >> n;
+    int arr[100];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
 
     for (int i = n - 1; i > 0; i--) {
         max_j = 0;
@@ -25,33 +141,108 @@ void exchangeSort(int arr[], int n) {
             if (arr[j] > arr[max_j]) {
                 max_j = j;
             }
+            temp = arr[max_j];
+            arr[max_j] = arr[i];
+            arr[i] = temp;
         }
-        temp = arr[max_j];
-        arr[max_j] = arr[i];
-        arr[i] = temp;
     }
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
 }
 
+// descending
+#include <iostream>
+using namespace std;
+
 int main() {
-    const int n = 9;
-    int arrBubble[n] = { 2, 45, 65, 76, 68, 94, 21, 16, 10 };
-    int arrExchange[n] = { 2, 45, 65, 76, 68, 94, 21, 16, 10 };
+    int n, temp, max_j;
+    cin >> n;
+    int arr[100];
 
-    // Bubble Sort
-    bubbleSort(arrBubble, n);
-    cout << "Bubble Sort: ";
     for (int i = 0; i < n; i++) {
-        cout << arrBubble[i] << " ";
+        cin >> arr[i];
     }
-    cout << endl;
 
-    // Exchange Sort
-    exchangeSort(arrExchange, n);
-    cout << "Exchange Sort: ";
-    for (int i = 0; i < n; i++) {
-        cout << arrExchange[i] << " ";
+    for (int i = n - 1; i > 0; i--) {
+        max_j = 0;
+        for (int j = 1; j <= i; j++) {
+            if (arr[j] < arr[max_j]) {
+                max_j = j;
+            }
+            temp = arr[max_j];
+            arr[max_j] = arr[i];
+            arr[i] = temp;
+        }
     }
-    cout << endl;
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
+}
+
+
+
+// ascending Insertion
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, key;
+    cin >> n;
+    int arr[100];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    for (int i = 1; i < n; i++) {
+        key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
 
     return 0;
 }
+
+// descending 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, key;
+    cin >> n;
+    int arr[100];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    for (int i = 1; i < n; i++) {
+        key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] < key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+
